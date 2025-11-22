@@ -1,4 +1,4 @@
- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" [routerLink]="menuUsuario.length > 0 ? '/home' : '/'">Projeto DS</a>
 
@@ -25,6 +25,19 @@
           <a class="nav-link" routerLink="/extrato" routerLinkActive="active">Extrato</a>
         </li>
       </ul>
+      
+      <div class="d-flex align-items-center me-3">
+          <button class="btn btn-sm me-3" 
+                  [ngClass]="{'btn-light': !isLowVisionModeActive, 'btn-warning': isLowVisionModeActive}"
+                  (click)="toggleLowVisionMode()" 
+                  aria-label="Alternar modo de Alto Contraste">
+            <span *ngIf="!isLowVisionModeActive">Modo Leitura</span>
+            <span *ngIf="isLowVisionModeActive">Desativar Leitura</span>
+          </button>
+
+          <button class="btn btn-sm btn-outline-light me-1" (click)="diminuirFonte()" aria-label="Diminuir tamanho da fonte">A-</button>
+          <button class="btn btn-sm btn-outline-light" (click)="aumentarFonte()" aria-label="Aumentar tamanho da fonte">A+</button>
+      </div>
 
     <div *ngIf="menuUsuario.length > 0" class="form-inline my-2 my-lg-0">
       <span class="btn btn-light mr-3 disabled" tabindex="-1" role="button" aria-disabled="true">

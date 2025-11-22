@@ -1,4 +1,62 @@
-/* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+html {
+  transition: font-size 0.2s ease;
+}
+
+.low-vision-mode {
+  background-color: #000 !important; 
+  color: #fff !important; 
+}
+
+.low-vision-mode .container,
+.low-vision-mode h2,
+.low-vision-mode label,
+.low-vision-mode a { 
+  color: #fff !important; 
+}
+
+.low-vision-mode .table th, 
+.low-vision-mode .table td {
+  font-size: 1.5rem !important; 
+  padding: 1rem !important; 
+  line-height: 1.6;  
+  color: #fff !important;
+  background-color: #000 !important;
+  border-color: #333 !important;
+}
+
+.low-vision-mode .table.table-bordered {
+  border-color: #fff !important;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    --bs-table-bg-type: #080808; 
+    background-color: var(--bs-table-bg-type);
+}
+
+.table-striped > tbody > tr:nth-of-type(even) {
+    --bs-table-bg-type: #888686; 
+    background-color: var(--bs-table-bg-type);
+}
+
+.low-vision-mode .table-striped > tbody > tr:nth-of-type(odd) {
+    --bs-table-bg-type: #222 !important; 
+    background-color: var(--bs-table-bg-type) !important;
+}
+
+.low-vision-mode .table-striped > tbody > tr:nth-of-type(even) {
+    --bs-table-bg-type: #000 !important; 
+    background-color: var(--bs-table-bg-type) !important;
+}
+
+.low-vision-mode .table-dark {
+  --bs-table-bg: #444 !important;
+}
+
+.blur-simulation {
+  filter: blur(4px);
+}

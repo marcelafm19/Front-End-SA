@@ -36,17 +36,17 @@
         <input id="valor" type="text" class="form-control" formControlName="valor" mask="separator.2" prefix="R$ " />
       </div>
 
-      <div class="col-md-6 mb-3">
-                <label for="categoria" class="form-label">Categoria</label>
-                <select class="form-select" aria-label="Default select example" formControlName="categoria">
+        <div class="col-md-6 mb-3">
+        <label for="categoriaDespesa" class="form-label">Categoria</label>
+        <select id="categoriaDespesa" class="form-select" formControlName="categoria">
                     <option [ngValue]="null" disabled selected>Selecione uma Categoria</option>
                     <option *ngFor="let categoria of listaCategorias" [ngValue]="categoria">{{ categoria.descricao }}</option>
                 </select>
             </div>
 
-       <div class="col-md-6 mb-3">
-                <label for="usuario" class="form-label">Usuário</label>
-                <select class="form-select" aria-label="Default select example" formControlName="usuario">
+         <div class="col-md-6 mb-3">
+        <label for="usuarioDespesa" class="form-label">Usuário</label>
+        <select id="usuarioDespesa" class="form-select" formControlName="usuario">
                     <option [ngValue]="null" disabled selected>Selecione um Usuário</option>
                     <option *ngFor="let usuario of listaUsuarios" [ngValue]="usuario">{{ usuario.nome }}</option>
                 </select>

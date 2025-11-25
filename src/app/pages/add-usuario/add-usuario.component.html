@@ -5,7 +5,8 @@
 
         <div class="row">
             <div class="col-md-12 text-center">
-                <img [src]="imagemUsuario || 'assets/usuario-padrao.png'" class="img-usuario" (click)="abrirInputImagem()">  
+                <img [src]="imagemUsuario || 'assets/usuario-padrao.png'" class="img-usuario" (click)="abrirInputImagem()">
+                <label for="inputImagem" class="visually-hidden">Selecionar imagem do usuário</label>
                 <input type="file" id="inputImagem" hidden class="form-control" (change)="carregarImagem($event)">
             </div>
         </div>
@@ -26,8 +27,8 @@
         <div class="row">
             <div class="col-md-3 mb-3">
                 <label for="login" class="form-label">Login</label>
-                <input id="login" type="text" class="form-control" formControlName="login" (blur)="verificarLogin()">
-                <div *ngIf="mensagemErroLogin" class="text-danger small mt-1">
+                <input id="login" type="text" class="form-control" formControlName="login" (blur)="verificarLogin()" [attr.aria-describedby]="mensagemErroLogin ? 'loginErroMensagem' : null">
+                <div *ngIf="mensagemErroLogin" id="loginErroMensagem" class="text-danger small mt-1" role="alert" aria-live="assertive">
                     {{ mensagemErroLogin }}
                 </div>
             </div>
@@ -37,7 +38,7 @@
             </div>
             <div class="col-md-6 mb-3">
                 <label for="nivelAcesso" class="form-label">Nível de Acesso</label>
-                <select class="form-select" aria-label="Default select example" formControlName="nivelAcesso">
+                <select id="nivelAcesso" class="form-select" formControlName="nivelAcesso">
                     <option value="" disabled selected>Selecione um nível de acesso</option>
                     <option value="NIVEL1">Nível 1</option>
                     <option value="NIVEL2">Nível 2</option>

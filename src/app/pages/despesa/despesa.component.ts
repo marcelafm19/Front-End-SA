@@ -13,6 +13,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class DespesaComponent {
   lista: Despesa[] = [];
+  mostrarResumo = false;
 
   constructor(private service: DespesaService, private router: Router) {}
 
@@ -46,5 +47,9 @@ export class DespesaComponent {
 
   editar(id: number): void {    
     this.router.navigate(['/add-despesa', id]);    
+  }
+
+  alternarResumo(): void {
+    this.mostrarResumo = !this.mostrarResumo;
   }
 }

@@ -5,7 +5,13 @@
     </div>
   </div>
 
-  <table class="table table-bordered table-hover table-striped align-middle">
+  <div class="d-flex justify-content-end mb-3">
+    <button type="button" class="btn btn-outline-secondary" (click)="alternarResumo()" [attr.aria-pressed]="mostrarResumo">
+      {{ mostrarResumo ? 'Ver tabela completa' : 'Ver tabela resumida' }}
+    </button>
+  </div>
+
+  <table *ngIf="!mostrarResumo" class="table table-bordered table-hover table-striped align-middle">
     <thead class="table-dark">
       <tr>
         <th>Data</th>
@@ -27,6 +33,30 @@
       </tr>
       <tr *ngIf="listaTransacoes.length === 0">
         <td colspan="7" class="text-center">Nenhuma transação encontrada.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table *ngIf="mostrarResumo" class="table table-bordered table-hover table-striped align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>Valor</th>
+        <th>Tipo da Operação</th>
+        <th>Descrição</th>
+        <th>Usuário</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transacao of listaTransacoes">
+        <td [ngClass]="{'text-danger': transacao.tipo === 'Débito', 'text-success': transacao.tipo === 'Crédito'}">
+          {{ transacao.valor | currency:'BRL':'symbol':'1.2-2' }}
+        </td>
+        <td>{{ transacao.tipoOperacao }}</td>
+        <td>{{ transacao.descricaoDetalhada }}</td>
+        <td>{{ transacao.usuario }}</td>
+      </tr>
+      <tr *ngIf="listaTransacoes.length === 0">
+        <td colspan="4" class="text-center">Nenhuma transação encontrada.</td>
       </tr>
     </tbody>
   </table>

@@ -38,6 +38,7 @@ export class ExtratoComponent implements OnInit {
   balanco: number = 0;
 
   listaTransacoes: ITransacao[] = []; 
+  mostrarResumo = false;
   
   balancoPorCategoria: { [key: string]: number } = {};
   balancoPorUsuario: { [key: string]: number } = {};
@@ -173,5 +174,9 @@ export class ExtratoComponent implements OnInit {
         this.balancoPorUsuario[transacao.usuario] += valor;
       }
     });
+  }
+
+  alternarResumo(): void {
+    this.mostrarResumo = !this.mostrarResumo;
   }
 }

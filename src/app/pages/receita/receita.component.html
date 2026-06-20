@@ -1,0 +1,39 @@
+<div class="container mt-4">  
+  <h2 class="mb-4 border-bottom border-3 border-danger">Receitas</h2>
+
+  <div class="d-flex justify-content-end mb-2">
+    <a routerLink="/add-receita" routerLinkActive="active" class="btn btn-primary">
+      <i class="fa-solid fa-plus me-2" aria-hidden="true"></i>Cadastrar
+    </a>
+  </div>
+
+  <table class="table table-bordered table-hover table-striped align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th class="col-entrada" scope="col">Entrada</th>
+        <th class="col-valor" scope="col">Valor</th>
+        <th class="col-categoria" scope="col">Categoria</th>
+        <th class="col-usuario" scope="col">Usuário</th>
+        <th class="text-center" scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let objeto of lista">
+        <td>{{ objeto.dataEntrada | date:'dd/MM/yyyy' }}</td>
+        <td>{{ objeto.valor | currency:'BRL':'symbol':'1.2-2' }}</td>
+        <td>{{ objeto.categoria?.descricao }}</td>
+        <td>{{ objeto.usuario?.nome }}</td>
+        <td class="text-center">
+          <div class="d-flex justify-content-center gap-2">
+            <button class="btn btn-sm btn-warning d-flex align-items-center" (click)="editar(objeto.id)" aria-label="Editar receita" title="Editar">
+              <i class="fa-solid fa-pen me-2" aria-hidden="true"></i> Editar
+            </button>
+            <button class="btn btn-sm btn-danger d-flex align-items-center" (click)="excluir(objeto.id!)" aria-label="Excluir receita" title="Excluir">
+              <i class="fa-solid fa-trash me-2" aria-hidden="true"></i> Excluir
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

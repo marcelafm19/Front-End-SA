@@ -1,0 +1,60 @@
+<div class="container mt-4">
+    <h2 class="mb-4 border-bottom border-3 border-danger">Usuário</h2>
+
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <img [src]="imagemUsuario || 'assets/usuario-padrao.png'" class="img-usuario" (click)="abrirInputImagem()">
+                <label for="inputImagem" class="visually-hidden">Selecionar imagem do usuário</label>
+                <input type="file" id="inputImagem" hidden class="form-control" (change)="carregarImagem($event)">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input id="nome" type="text" class="form-control" formControlName="nome">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input id="email" type="text" class="form-control" formControlName="email">
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <label for="login" class="form-label">Login</label>
+                <input id="login" type="text" class="form-control" formControlName="login" (blur)="verificarLogin()" [attr.aria-describedby]="mensagemErroLogin ? 'loginErroMensagem' : null">
+                <div *ngIf="mensagemErroLogin" id="loginErroMensagem" class="text-danger small mt-1" role="alert" aria-live="assertive">
+                    {{ mensagemErroLogin }}
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="senha" class="form-label">Senha</label>
+                <input id="senha" type="password" class="form-control" formControlName="senha">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="nivelAcesso" class="form-label">Nível de Acesso</label>
+                <select id="nivelAcesso" class="form-select" formControlName="nivelAcesso">
+                    <option value="" disabled selected>Selecione um nível de acesso</option>
+                    <option value="NIVEL1">Nível 1</option>
+                    <option value="NIVEL2">Nível 2</option>
+                    <option value="NIVEL3">Nível 3</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <a routerLink="/despesas" class="btn btn-secondary">
+                Cancelar
+            </a>
+            <button type="submit" class="btn btn-success" [disabled]="formGroup.invalid">
+                Salvar
+            </button>
+        </div>
+
+    </form>
+</div>

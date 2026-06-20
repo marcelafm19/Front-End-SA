@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <h2 class="mb-4 border-bottom border-3 border-danger">Usuários</h2>
+
+  <div class="d-flex justify-content-end mb-2">
+    <a routerLink="/add-usuario" class="btn btn-primary d-flex align-items-center">
+      <i class="fa-solid fa-plus me-2" aria-hidden="true"></i>Cadastrar
+    </a>
+  </div>
+
+  <table class="table table-bordered table-hover table-striped align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Nome</th>
+        <th scope="col">Email</th>
+        <th scope="col">Login</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let objeto of lista">
+        <td class="text-center"> 
+            <img [src]="objeto.urlImagem || 'assets/usuario-padrao.png'" alt="Foto" width="40" height="40" style="border-radius: 50%;"> 
+        </td>
+        <td>{{ objeto.nome }}</td>
+        <td>{{ objeto.email }}</td>
+        <td>{{ objeto.login }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

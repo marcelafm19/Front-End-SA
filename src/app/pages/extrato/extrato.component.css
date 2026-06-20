@@ -1,0 +1,59 @@
+/* Estilos para os Cards de Resumo Visual */
+.cards-resumo {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.card-financeiro {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  gap: 15px;
+}
+
+.card-financeiro i {
+  font-size: 2rem;
+  padding: 15px;
+  border-radius: 50%;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.titulo-card {
+  font-size: 1rem;
+  color: #555;
+  font-weight: 600;
+}
+
+.valor-card {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Cores Bebê (Pastel) para os Cards */
+.receita { background-color: #E8F6F3; border-left: 5px solid #A3E4D7; }
+.receita i { color: #1ABC9C; background-color: #D1F2EB; }
+
+.despesa { background-color: #FDEDEC; border-left: 5px solid #F5B7B1; }
+.despesa i { color: #E74C3C; background-color: #FADBD8; }
+
+.balanco { background-color: #EBF5FB; border-left: 5px solid #AED6F1; }
+.balanco i { color: #3498DB; background-color: #D6EAF8; }
+
+/* Cores sóbrias para a Tabela */
+.text-danger-custom {
+  color: #b91c1c !important;
+}
+
+.text-warning-custom {
+  color: #d97706 !important;
+}

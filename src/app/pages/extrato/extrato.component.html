@@ -1,0 +1,62 @@
+<div class="container mt-4">
+  <h2 class="mb-4 border-bottom border-3 border-danger">
+    <i class="fa-solid fa-file-invoice-dollar me-2"></i>Extrato Financeiro
+  </h2>
+
+  <div class="cards-resumo mb-4">
+    <div class="card-financeiro receita"><i class="fa-solid fa-arrow-up"></i>
+      <div class="info"><span class="titulo-card">Receitas</span><span class="valor-card">{{ totalReceitas | currency:'BRL':'symbol':'1.2-2' }}</span></div>
+    </div>
+    <div class="card-financeiro despesa"><i class="fa-solid fa-arrow-down"></i>
+      <div class="info"><span class="titulo-card">Despesas</span><span class="valor-card">{{ totalDespesas | currency:'BRL':'symbol':'1.2-2' }}</span></div>
+    </div>
+    <div class="card-financeiro balanco"><i class="fa-solid fa-scale-balanced"></i>
+      <div class="info"><span class="titulo-card">Balanço</span><span class="valor-card">{{ balanco | currency:'BRL':'symbol':'1.2-2' }}</span></div>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="card shadow-sm border-0"><div class="card-body">
+        <h5>Balanço por Categoria</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex justify-content-between" *ngFor="let c of balancoPorCategoria | keyvalue">
+            {{ c.key }} <span class="fw-bold" [ngClass]="c.value < 0 ? 'text-danger' : 'text-success'">{{ c.value | currency:'BRL' }}</span>
+          </li>
+        </ul>
+      </div></div>
+    </div>
+    <div class="col-md-6">
+      <div class="card shadow-sm border-0"><div class="card-body">
+        <h5>Balanço por Usuário</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex justify-content-between" *ngFor="let u of balancoPorUsuario | keyvalue">
+            {{ u.key }} <span class="fw-bold" [ngClass]="u.value < 0 ? 'text-danger' : 'text-success'">{{ u.value | currency:'BRL' }}</span>
+          </li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="mb-2">
+<h5 class="text-secondary">Transações Recentes</h5>
+  </div>
+
+  <table class="table table-hover align-middle">
+    <thead class="table-light">
+      <tr><th>Data</th><th>Descrição</th><th>Valor</th><th>Tipo</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of listaTransacoes">
+        <td>{{ t.data | date:'dd/MM/yyyy' }}</td>
+        <td>{{ t.descricaoDetalhada }}</td>
+        <td class="fw-bold">{{ t.valor | currency:'BRL' }}</td>
+        <td>
+          <span class="badge" [ngClass]="t.categoriaTipo === 'Fixo' ? 'bg-success' : 'bg-warning text-dark'">
+            {{ t.categoriaTipo }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

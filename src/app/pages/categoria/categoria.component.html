@@ -1,0 +1,77 @@
+<div class="container mt-4">
+  <h2 class="mb-4 border-bottom border-3 border-danger">Categorias</h2>
+
+  <div class="d-flex justify-content-end mb-2">
+    <button type="button" class="btn btn-primary d-flex align-items-center" (click)="cadastrar()"> 
+      <i class="fa-solid fa-plus me-2" aria-hidden="true"></i> Cadastrar 
+    </button>
+  </div>
+
+  <table class="table table-bordered table-hover table-striped align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th class="col-descricao" scope="col">Descrição</th>
+         <th class="col-tipo" scope="col">Tipo</th>
+        <th class="text-center col-acoes" scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let objeto of lista">
+        <td>{{ objeto.descricao }}</td>
+        <td>{{ objeto.tipo }}</td>
+        <td class="text-center">
+          <div class="d-flex justify-content-center gap-2">
+            <button class="btn btn-sm btn-warning d-flex align-items-center" (click)="editar(objeto.id)" aria-label="Editar categoria" title="Editar">
+              <i class="fa-solid fa-pen me-2" aria-hidden="true"></i> Editar
+            </button>
+            <button class="btn btn-sm btn-danger d-flex align-items-center" (click)="excluir(objeto.id)" aria-label="Excluir categoria" title="Excluir">
+              <i class="fa-solid fa-trash me-2" aria-hidden="true"></i> Excluir
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade show" tabindex="-1" [ngClass]="{ 'd-block': modalAberto }">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Cadastrar Categoria</h5>
+        <button type="button" class="btn-close" (click)="fecharModal()" aria-label="Fechar"></button>
+      </div>
+
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <div class="modal-body">
+
+          <input type="hidden" formControlName="id">
+
+          <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição</label>
+            <input id="descricao" class="form-control" formControlName="descricao">
+          </div>
+          <div class="mb-3">
+            <label for="tipo" class="form-label">Tipo</label>
+            <select id="tipo" class="form-select" formControlName="tipo">
+            <option value="" disabled selected>Selecione um tipo</option>
+            <option value="Fixo">Fixo</option>
+            <option value="Variável">Variável</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary d-flex align-items-center" (click)="fecharModal()">
+            <i class="fa-solid fa-xmark me-2" aria-hidden="true"></i> Cancelar
+          </button>
+          <button type="submit" class="btn btn-success d-flex align-items-center" [disabled]="formGroup.invalid">
+            <i class="fa-solid fa-check me-2" aria-hidden="true"></i> Salvar
+          </button>
+        </div>
+      </form>
+      
+    </div>
+  </div>
+</div>

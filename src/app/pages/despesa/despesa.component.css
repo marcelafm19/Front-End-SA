@@ -1,15 +1,10 @@
-.col-descricao {
-    width: 20%;
+.col-descricao { min-width: 250px; }
+.col-vencimento, .col-pagamento { min-width: 120px; }
+.col-situacao { min-width: 110px; }
+.col-valor { min-width: 140px; }
+.col-categoria, .col-usuario { min-width: 160px; }
+.col-acoes { 
+    min-width: 160px; 
+    white-space: nowrap; 
 }
-
-.col-valor {
-    width: 10%;
-}
-
-.col-categoria {
-    width: 15%;
-}
-
-.col-acoes {
-    width: 25%;
-}
+.col-tipo { min-width: 160px; }

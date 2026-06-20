@@ -2,67 +2,61 @@
   <h2 class="mb-4 border-bottom border-3 border-danger">Despesas</h2>
 
   <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2 mb-2">
-    <a routerLink="/add-despesa" routerLinkActive="active" class="btn btn-primary">
-      <i class="fa-solid fa-plus me-2" aria-hidden="true"></i>Cadastrar
-    </a>
+    <a routerLink="/add-despesa" routerLinkActive="active" class="btn btn-primary">Cadastrar</a>
     <button type="button" class="btn btn-outline-secondary" (click)="alternarResumo()" [attr.aria-pressed]="mostrarResumo">
-      <i class="fa-solid fa-table-list me-2" aria-hidden="true"></i>
       {{ mostrarResumo ? 'Ver tabela completa' : 'Ver tabela resumida' }}
     </button>
   </div>
 
-  <table *ngIf="!mostrarResumo" class="table table-bordered table-hover table-striped align-middle">
-    <thead class="table-dark">
-      <tr>
-        <th class="col-descricao" scope="col">Descrição</th>
-        <th class="col-vencimento" scope="col">Vencimento</th>
-        <th class="col-pagamento" scope="col">Pagamento</th>
-        <th class="col-situacao" scope="col">Situação</th>
-        <th class="col-valor" scope="col">Valor</th>
-        <th class="col-categoria" scope="col">Categoria</th>
-        <th class="col-usuario" scope="col">Usuário</th>
-        <th class="text-center" scope="col">Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let objeto of lista">
-        <td>{{ objeto.descricao }}</td>
-        <td>{{ objeto.dataVencimento | date:'dd/MM/yyyy' }}</td>
-        <td>{{ objeto.dataPagamento | date:'dd/MM/yyyy' }}</td>
-        <td>{{ objeto.situacao }}</td>
-        <td>{{ objeto.valor | currency:'BRL':'symbol':'1.2-2' }}</td>
-        <td>{{ objeto.categoria?.descricao }}</td>
-        <td>{{ objeto.usuario?.nome }}</td>
-        <td class="text-center">
-          <div class="d-flex justify-content-center gap-2">
-            <button class="btn btn-sm btn-warning d-flex align-items-center" (click)="editar(objeto.id)">
-              <i class="fa-solid fa-pen me-2" aria-hidden="true"></i> Editar
-            </button>
-            <button class="btn btn-sm btn-danger d-flex align-items-center" (click)="excluir(objeto.id!)">
-              <i class="fa-solid fa-trash me-2" aria-hidden="true"></i> Excluir
-            </button>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table *ngIf="!mostrarResumo" class="table table-bordered table-hover table-striped align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th class="col-descricao">Descrição</th>
+          <th class="col-vencimento">Vencimento</th>
+          <th class="col-pagamento">Pagamento</th>
+          <th class="col-situacao">Situação</th>
+          <th class="col-valor">Valor</th>
+          <th class="col-categoria">Categoria</th>
+          <th class="col-usuario">Usuário</th>
+          <th class="text-center col-acoes">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let objeto of lista">
+          <td>{{ objeto.descricao }}</td>
+          <td>{{ objeto.dataVencimento | date:'dd/MM/yyyy' }}</td>
+          <td>{{ objeto.dataPagamento | date:'dd/MM/yyyy' }}</td>
+          <td>{{ objeto.situacao }}</td>
+          <td>{{ objeto.valor | currency:'BRL':'symbol':'1.2-2' }}</td>
+          <td>{{ objeto.categoria?.descricao }}</td>
+          <td>{{ objeto.usuario?.nome }}</td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-warning me-2" (click)="editar(objeto.id)">Editar</button>
+            <button class="btn btn-sm btn-danger" (click)="excluir(objeto.id!)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-  <table *ngIf="mostrarResumo" class="table table-bordered table-hover table-striped align-middle">
-    <thead class="table-dark">
-      <tr>
-        <th class="col-valor" scope="col">Valor</th>
-        <th class="col-tipo" scope="col">Tipo da Operação</th>
-        <th class="col-descricao" scope="col">Descrição</th>
-        <th class="col-usuario" scope="col">Usuário</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let objeto of lista">
-        <td>{{ objeto.valor | currency:'BRL':'symbol':'1.2-2' }}</td>
-        <td>Despesa</td>
-        <td>{{ objeto.descricao }}</td>
-        <td>{{ objeto.usuario?.nome }}</td>
-      </tr>
-    </tbody>
-  </table>
+    <table *ngIf="mostrarResumo" class="table table-bordered table-hover table-striped align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th class="col-valor">Valor</th>
+          <th class="col-tipo">Tipo da Operação</th>
+          <th class="col-descricao">Descrição</th>
+          <th class="col-usuario">Usuário</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let objeto of lista">
+          <td>{{ objeto.valor | currency:'BRL':'symbol':'1.2-2' }}</td>
+          <td>Despesa</td>
+          <td>{{ objeto.descricao }}</td>
+          <td>{{ objeto.usuario?.nome }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+

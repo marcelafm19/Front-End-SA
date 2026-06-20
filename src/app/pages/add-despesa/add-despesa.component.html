@@ -1,4 +1,4 @@
-<div class="container mt-4">    
+<div class="container mt-4">
   <h2 class="mb-4 border-bottom border-3 border-danger">Cadastrar Despesa</h2>
 
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
@@ -25,32 +25,39 @@
       <div class="col-md-6 mb-3">
         <label for="situacao" class="form-label">Situação</label>
         <select id="situacao" class="form-select" formControlName="situacao">
-        <option value="" disabled selected>Selecione uma Situação</option>
-        <option value="Pago">Pago</option>
-        <option value="Pendente">Pendente</option>   
+          <option value="" disabled selected>Selecione uma Situação</option>
+          <option value="Pago">Pago</option>
+          <option value="Pendente">Pendente</option>
         </select>
       </div>
 
       <div class="col-md-6 mb-3">
         <label for="valor" class="form-label">Valor</label>
-        <input id="valor" type="text" class="form-control" formControlName="valor" mask="separator.2" prefix="R$ " />
+
+        <input id="valor" type="text" class="form-control" formControlName="valor" mask="separator.2"
+          thousandSeparator="." decimalMarker="," prefix="R$ " placeholder="R$ 0,00"
+          [ngClass]="{ 'is-invalid': formGroup.get('valor')?.invalid && formGroup.get('valor')?.touched }" />
+
+        <div class="invalid-feedback" *ngIf="formGroup.get('valor')?.hasError('required')">
+          O valor da despesa é obrigatório para salvar.
+        </div>
       </div>
 
-        <div class="col-md-6 mb-3">
+      <div class="col-md-6 mb-3">
         <label for="categoriaDespesa" class="form-label">Categoria</label>
         <select id="categoriaDespesa" class="form-select" formControlName="categoria">
-                    <option [ngValue]="null" disabled selected>Selecione uma Categoria</option>
-                    <option *ngFor="let categoria of listaCategorias" [ngValue]="categoria">{{ categoria.descricao }}</option>
-                </select>
-            </div>
+          <option [ngValue]="null" disabled selected>Selecione uma Categoria</option>
+          <option *ngFor="let categoria of listaCategorias" [ngValue]="categoria">{{ categoria.descricao }}</option>
+        </select>
+      </div>
 
-         <div class="col-md-6 mb-3">
+      <div class="col-md-6 mb-3">
         <label for="usuarioDespesa" class="form-label">Usuário</label>
         <select id="usuarioDespesa" class="form-select" formControlName="usuario">
-                    <option [ngValue]="null" disabled selected>Selecione um Usuário</option>
-                    <option *ngFor="let usuario of listaUsuarios" [ngValue]="usuario">{{ usuario.nome }}</option>
-                </select>
-            </div>
+          <option [ngValue]="null" disabled selected>Selecione um Usuário</option>
+          <option *ngFor="let usuario of listaUsuarios" [ngValue]="usuario">{{ usuario.nome }}</option>
+        </select>
+      </div>
     </div>
 
     <div class="d-flex justify-content-between">

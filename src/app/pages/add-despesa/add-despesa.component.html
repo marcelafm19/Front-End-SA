@@ -1,30 +1,30 @@
 <div class="container mt-4">
-  <h2 class="mb-4 border-bottom border-3 border-danger">Cadastrar Despesa</h2>
+  <h2 class="mb-4 border-bottom border-3 border-danger btn-acoes ">Cadastrar Despesa</h2>
 
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
 
     <div class="row">
       <div class="col-md-12 mb-3">
         <label for="descricao" class="form-label">Descrição</label>
-        <input id="descricao" type="text" class="form-control" formControlName="descricao" />
+        <input id="descricao" type="text" class="form-control " formControlName="descricao" />
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-6 mb-3">
-        <label for="dataVencimento" class="form-label">Data de Vencimento</label>
-        <input id="dataVencimento" type="date" class="form-control" formControlName="dataVencimento" />
+        <label for="dataVencimento" class="form-label ">Data de Vencimento</label>
+        <input id="dataVencimento" type="date" class="form-control " formControlName="dataVencimento" />
       </div>
       <div class="col-md-6 mb-3">
         <label for="dataPagamento" class="form-label">Data de Pagamento</label>
-        <input id="dataPagamento" type="date" class="form-control" formControlName="dataPagamento" />
+        <input id="dataPagamento" type="date" class="form-control " formControlName="dataPagamento" />
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="situacao" class="form-label">Situação</label>
-        <select id="situacao" class="form-select" formControlName="situacao">
+        <select id="situacao" class="form-select " formControlName="situacao">
           <option value="" disabled selected>Selecione uma Situação</option>
           <option value="Pago">Pago</option>
           <option value="Pendente">Pendente</option>
@@ -45,7 +45,7 @@
 
       <div class="col-md-6 mb-3">
         <label for="categoriaDespesa" class="form-label">Categoria</label>
-        <select id="categoriaDespesa" class="form-select" formControlName="categoria">
+        <select id="categoriaDespesa" class="form-select rounded-3" formControlName="categoria">
           <option [ngValue]="null" disabled selected>Selecione uma Categoria</option>
           <option *ngFor="let categoria of listaCategorias" [ngValue]="categoria">{{ categoria.descricao }}</option>
         </select>
@@ -61,10 +61,10 @@
     </div>
 
     <div class="d-flex justify-content-between">
-      <a routerLink="/despesas" class="btn btn-secondary">
+      <a routerLink="/despesas" class="btn btn-acoes  btn-secondary">
         Cancelar
       </a>
-      <button type="submit" class="btn btn-success" [disabled]="formGroup.invalid">
+      <button type="submit" class="btn btn-acoes  btn-success" [disabled]="formGroup.invalid">
         Salvar
       </button>
     </div>

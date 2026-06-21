@@ -1,0 +1,12 @@
+.btn-acoes {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 8px 16px;
+}
+.nav-link {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 0;
+}

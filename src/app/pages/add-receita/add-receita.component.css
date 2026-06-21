@@ -1,0 +1,9 @@
+.btn-acoes {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 8px 16px;
+}
+.form-control,
+.form-select {
+  min-height: 44px;
+}

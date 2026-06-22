@@ -1,8 +1,15 @@
 /* ==========================================
-   1. CÓDIGO ORIGINAL (MANTIDO INTACTO)
+   1. CÓDIGO ORIGINAL COM FUNDO ANTI-FADIGA
    ========================================== */
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Fundo cinza suave para evitar ofuscamento do branco puro */
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  background-color: #F0F4F4; 
+  color: #333333;
+}
 
 html {
   transition: font-size 0.2s ease;
@@ -64,7 +71,7 @@ html {
 
 
 /* ==========================================
-   2. AJUSTES WCAG (Tamanho 44px e Borda)
+   2. AJUSTES WCAG (Botões, Caixas e Cursor)
    ========================================== */
 /* Botões: Acessibilidade motora */
 .btn {
@@ -74,17 +81,18 @@ html {
 
 /* Caixas de Texto (Modo Padrão Claro) */
 input.form-control, select.form-select, textarea.form-control {
-  border: 2px solid #555555 !important; /* Borda forte cinza escura */
+  border: 2px solid #555555 !important; 
   border-radius: 6px !important;
   min-height: 44px !important;          
   color: #333 !important;
-  background-color: #fff !important;
+  background-color: #fff !important;   
+  caret-color: #008B6B !important;     /* Cursor Verde Esmeralda visível */
 }
 
 /* Foco nas caixas (Modo Padrão Claro) */
 input.form-control:focus, select.form-select:focus, textarea.form-control:focus {
-  border: 2px solid #006666 !important; 
-  box-shadow: 0 0 0 4px rgba(0, 102, 102, 0.2) !important;
+  border: 2px solid #008B6B !important; 
+  box-shadow: 0 0 0 4px rgba(0, 139, 107, 0.2) !important;
   outline: none;
 }
 
@@ -92,19 +100,20 @@ input.form-control:focus, select.form-select:focus, textarea.form-control:focus 
 /* ==========================================
    3. CAIXAS DE TEXTO NO MODO LEITURA
    ========================================== */
-/* Força os inputs a ficarem com fundo escuro e borda branca */
+/* Fundo escuro, borda branca e cursor neon */
 .low-vision-mode input.form-control, 
 .low-vision-mode select.form-select, 
 .low-vision-mode textarea.form-control {
   background-color: #222 !important; 
   color: #fff !important;            
-  border: 2px solid #fff !important; /* Borda branca para destacar no preto */
+  border: 2px solid #fff !important; 
+  caret-color: #00ffcc !important;     /* Cursor Verde Neon no fundo escuro */
 }
 
-/* Quando clicar na caixa no Modo Leitura, o contorno acende */
+/* Foco nas caixas no Modo Leitura */
 .low-vision-mode input.form-control:focus, 
 .low-vision-mode select.form-select:focus, 
 .low-vision-mode textarea.form-control:focus {
-  border: 2px solid #00ffcc !important; /* Verde neon de alto contraste */
+  border: 2px solid #00ffcc !important; 
   box-shadow: 0 0 0 4px rgba(0, 255, 204, 0.3) !important;
 }

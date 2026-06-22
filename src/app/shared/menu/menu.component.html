@@ -1,33 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #008B6B;">
   <div class="container-fluid">
-    <a class="navbar-brand" [routerLink]="menuUsuario.length > 0 ? '/home' : '/'">Projeto IHC</a>
+    <a class="navbar-brand" [routerLink]="menuUsuario.length > 0 ? '/home' : '/'">Projeto DS</a>
 
-    <button class="navbar-toggler btn-acoes" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/categorias" routerLinkActive="active">Categorias</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/despesas" routerLinkActive="active">Despesas</a>
-        </li>
-         <li>
-          <a class="nav-link" routerLink="/receitas" routerLinkActive="active">Receitas</a>
-        </li>
-        <li>
+        <li class="nav-item nav-card-item">
           <a class="nav-link" routerLink="/usuarios" routerLinkActive="active">Usuários</a>
         </li>
-        <li>
-          <a class="nav-link " routerLink="/extrato" routerLinkActive="active">Extrato</a>
+        <li class="nav-item nav-card-item">
+          <a class="nav-link" routerLink="/categorias" routerLinkActive="active">Categorias</a>
+        </li>
+        <li class="nav-item nav-card-item">
+          <a class="nav-link" routerLink="/despesas" routerLinkActive="active">Despesas</a>
+        </li>
+        <li class="nav-item nav-card-item">
+          <a class="nav-link" routerLink="/receitas" routerLinkActive="active">Receitas</a>
+        </li>
+        <li class="nav-item nav-card-item">
+          <a class="nav-link" routerLink="/extrato" routerLinkActive="active">Extrato</a>
         </li>
       </ul>
       
       <div class="d-flex align-items-center me-3">
-          <button class="btn btn-acoes me-3" 
+          <button class="btn btn-sm me-3" 
                   [ngClass]="{'btn-light': !isLowVisionModeActive, 'btn-warning': isLowVisionModeActive}"
                   (click)="toggleLowVisionMode()" 
                   aria-label="Alternar modo de Alto Contraste">
@@ -35,15 +35,15 @@
             <span *ngIf="isLowVisionModeActive">Desativar Leitura</span>
           </button>
 
-          <button class="btn btn-acoes btn-outline-light me-1" (click)="diminuirFonte()" aria-label="Diminuir tamanho da fonte">A-</button>
-          <button class="btn btn-acoes btn-outline-light" (click)="aumentarFonte()" aria-label="Aumentar tamanho da fonte">A+</button>
+          <button class="btn btn-sm btn-outline-light me-1" (click)="diminuirFonte()" aria-label="Diminuir tamanho da fonte">A-</button>
+          <button class="btn btn-sm btn-outline-light" (click)="aumentarFonte()" aria-label="Aumentar tamanho da fonte">A+</button>
       </div>
 
     <div *ngIf="menuUsuario.length > 0" class="form-inline my-2 my-lg-0">
-      <span class="btn btn-light mr-3 disabled btn-acoes" tabindex="-1" role="button" aria-disabled="true">
+      <span class="btn btn-light mr-3 disabled" tabindex="-1" role="button" aria-disabled="true">
         {{ nomeUsuario }}
       </span>
-      <a class="btn btn-outline-danger ms-2 my-sm-0 btn-acoes" href="/" (click)="sair()">Sair</a>
+      <a class="btn btn-outline-danger ms-2 my-sm-0" href="/" (click)="sair()">Sair</a>
     </div>
 
     </div>

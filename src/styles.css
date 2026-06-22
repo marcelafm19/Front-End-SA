@@ -1,7 +1,8 @@
-
+/* ==========================================
+   1. CÓDIGO ORIGINAL (MANTIDO INTACTO)
+   ========================================== */
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
 
 html {
   transition: font-size 0.2s ease;
@@ -59,4 +60,51 @@ html {
 
 .blur-simulation {
   filter: blur(4px);
+}
+
+
+/* ==========================================
+   2. AJUSTES WCAG (Tamanho 44px e Borda)
+   ========================================== */
+/* Botões: Acessibilidade motora */
+.btn {
+  min-height: 44px !important;          
+  font-weight: 600 !important;
+}
+
+/* Caixas de Texto (Modo Padrão Claro) */
+input.form-control, select.form-select, textarea.form-control {
+  border: 2px solid #555555 !important; /* Borda forte cinza escura */
+  border-radius: 6px !important;
+  min-height: 44px !important;          
+  color: #333 !important;
+  background-color: #fff !important;
+}
+
+/* Foco nas caixas (Modo Padrão Claro) */
+input.form-control:focus, select.form-select:focus, textarea.form-control:focus {
+  border: 2px solid #006666 !important; 
+  box-shadow: 0 0 0 4px rgba(0, 102, 102, 0.2) !important;
+  outline: none;
+}
+
+
+/* ==========================================
+   3. CAIXAS DE TEXTO NO MODO LEITURA
+   ========================================== */
+/* Força os inputs a ficarem com fundo escuro e borda branca */
+.low-vision-mode input.form-control, 
+.low-vision-mode select.form-select, 
+.low-vision-mode textarea.form-control {
+  background-color: #222 !important; 
+  color: #fff !important;            
+  border: 2px solid #fff !important; /* Borda branca para destacar no preto */
+}
+
+/* Quando clicar na caixa no Modo Leitura, o contorno acende */
+.low-vision-mode input.form-control:focus, 
+.low-vision-mode select.form-select:focus, 
+.low-vision-mode textarea.form-control:focus {
+  border: 2px solid #00ffcc !important; /* Verde neon de alto contraste */
+  box-shadow: 0 0 0 4px rgba(0, 255, 204, 0.3) !important;
 }

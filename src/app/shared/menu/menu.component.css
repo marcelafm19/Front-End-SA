@@ -1,12 +1,33 @@
-.btn-acoes {
-  min-height: 44px;
-  min-width: 44px;
-  padding: 8px 16px;
+/* ==========================================
+   ITENS DO MENU (As páginas lá em cima)
+   ========================================== */
+.nav-card-item {
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Borda mais grossa e visível */
+    border-radius: 8px;
+    margin: 0 4px;
+    transition: all 0.3s ease;
 }
+
 .nav-link {
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  padding-top: 0;
-  padding-bottom: 0;
+    color: #ffffff !important;
+    font-weight: 600 !important; /* Deixa a letra mais forte para não sumir no fundo */
+    padding: 8px 16px !important;
+    letter-spacing: 0.5px;       /* Um leve espaço entre as letras para ajudar na leitura */
+}
+
+/* Efeito ao passar o mouse */
+.nav-card-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #ffffff;
+}
+
+/* ==========================================
+   DESTAQUE DA PÁGINA ATUAL (Item Ativo)
+   ========================================== */
+.nav-link.active {
+    background-color: #ffffff !important; /* Fundo branco sólido para destacar 100% */
+    color: #008B6B !important;            /* A letra puxa o verde do menu */
+    border-radius: 6px;
+    font-weight: 700 !important;          /* Fica bem negrito */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
